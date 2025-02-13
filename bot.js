@@ -3,7 +3,7 @@ const fs = require("fs");
 const readline = require("readline");
 
 const repoURL = "https://github.com/haki-xerr/nikka-md.git"; // Change this to your repo
-const botDir = "HakiBot"; // Change this to your bot's folder name
+const botDir = "nikka-md"; // Change this to your bot's folder name
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -17,7 +17,7 @@ function setupBot(sessionID, sudo, prefix) {
         process.chdir(botDir);
 
         console.log("Installing dependencies...");
-        execSync("npm install", { stdio: "inherit" });
+        execSync("pm2 start . --attach --name nikka", { stdio: "inherit" });
 
         // Update config.js with new SESSION_ID, SUDO, and PREFIX
         const newConfig = `const { Sequelize } = require("sequelize");
